@@ -65,6 +65,20 @@ public class UsersModel {
     private RoleModel roleModel;
 
     /**
+     * Username used to log in and must be unique within the system.
+     */
+    @NotBlank(message = "Username cannot be blank")
+    @Size(max = 20, message = "Username length must be 20 characters or less")
+    private String username;
+
+    /**
+     * User's password for system access. Stored securely and used for authentication purposes.
+     */
+    @NotBlank(message = "Password cannot be blank")
+    @Size(max = 20, message = "Password cannot exceed 20 characters or less")
+    private String password;
+
+    /**
      * The date and time when the user record was created.
      * This attribute is used for auditing, tracking the initial creation of the user record.
      */
