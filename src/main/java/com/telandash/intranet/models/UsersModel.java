@@ -1,10 +1,7 @@
 package com.telandash.intranet.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -23,6 +20,7 @@ import java.time.ZonedDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "users")
 public class UsersModel {
     /**
@@ -33,6 +31,20 @@ public class UsersModel {
     @Column(unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * User's first name, used for personalization and display purposes across the application.
+     */
+    @NotBlank(message = "Name cannot be blank")
+    @Size(max = 50, message = "Name cannot exceed 50 characters or less")
+    private String name;
+
+    /**
+     * User's last name, complementing the first name for full identification and personalization.
+     */
+    @NotBlank(message = "Lastname cannot be blank")
+    @Size(max = 50, message = "Lastname cannot exceed 50 characters or less")
+    private String lastname;
 
     /**
      * Status indicating whether the user is active or inactive.
@@ -62,7 +74,7 @@ public class UsersModel {
      */
     @ManyToOne
     @JoinColumn(name = "rol", nullable = false)
-    private RoleModel roleModel;
+    private RoleModel role;
 
     /**
      * Username used to log in and must be unique within the system.
