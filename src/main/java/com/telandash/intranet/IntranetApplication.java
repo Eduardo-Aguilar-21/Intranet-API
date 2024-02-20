@@ -33,14 +33,14 @@ public class IntranetApplication {
 			empresa.setId(1L);
 
 			RoleModel rol = new RoleModel();
-			rol.setId(1L);
+			rol.setId(2L);
 
 			UsersModel usersModel = UsersModel.builder()
-					.name("Eduardo")
-					.lastname("Aguilar")
-					.dni("78547689")
+					.name("Ertick")
+					.lastname("James")
+					.dni("78547649")
 					.status(true)
-					.email("es123y123@gmail.com")
+					.email("es123y1e23@gmail.com")
 					.username("cond")
 					.password(passwordEncoder.encode("1234"))
 					.role(rol)

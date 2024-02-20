@@ -80,6 +80,9 @@ public class WebSecurityConfig {
                 .exceptionHandling().disable()
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/hello").permitAll();
+                    auth.requestMatchers("/api/test/alumnos").hasAuthority("ROLE_Alumno");
+                    auth.requestMatchers("/api/test/profesor").hasAuthority("ROLE_Profesor");
+
                     auth.requestMatchers("/api/camiones").permitAll();
                     auth.requestMatchers("/unprotected").permitAll();
                     auth.requestMatchers("/unprotected").permitAll();
